@@ -17,6 +17,11 @@ export default class HashMap {
   }
 
   set(key, value) {
+    const currentLoadFactor = this.length() / this.capacity;
+    if (currentLoadFactor > LOAD_FACTOR) {
+      this.resize();
+    }
+
     const hashCode = this.hash(key);
     const index = hashCode % this.capacity;
 
@@ -140,5 +145,24 @@ export default class HashMap {
     });
 
     return entries;
+  }
+
+  resize() {
+    const oldEntries = this.entries();
+    this.capacity = this.capacity * 2;
+    let newBuckets = new Array(this.capacity).fill(null);
+
+    oldEntries.forEach((entry) => {
+      const key = entry[0];
+      const index = this.hash(key) % this.capacity;
+
+      if (newBuckets[index] === null) {
+        newBuckets[index] = [entry];
+      } else {
+        newBuckets[index].push(entry);
+      }
+    });
+
+    this.buckets = newBuckets;
   }
 }

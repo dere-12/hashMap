@@ -1,25 +1,33 @@
 import HashMap from "./hashMap.js";
 
-const hashMap = new HashMap();
+const test = new HashMap();
 
-// const hashCode = hm.hash("Sita");
+test.set("apple", "red");
+test.set("banana", "yellow");
+test.set("carrot", "orange");
+test.set("dog", "brown");
+test.set("elephant", "gray");
+test.set("frog", "green");
+test.set("grape", "purple");
+test.set("hat", "black");
+test.set("ice cream", "white");
+test.set("jacket", "blue");
+test.set("kite", "pink");
+test.set("lion", "golden");
+test.set("moon", "silver");
+test.set("1", "one");
+test.set("2", "two");
+test.set("3", "three");
 
-hashMap.set("Rama", "Rama");
-hashMap.set("Sita", "Rama");
-hashMap.set("Sita", "Sita");
-hashMap.set("Sita", "SitaRama");
-hashMap.set("Ram", "Rom");
-hashMap.set("Pet", "Dog");
-hashMap.set("1", "Num");
-hashMap.set("Car", "Car");
-
-console.log(hashMap.buckets);
-console.log(hashMap.length());
-console.log(hashMap.keys());
-console.log(hashMap.values());
-console.log(hashMap.entries());
-// hashMap.clear();
-// console.log(hashMap.buckets);
-// console.log(hashMap.length());
-// console.log(hashMap.remove("Pet"));
-// console.log(hashMap.buckets);
+console.log(test.buckets);
+console.log(test.length());
+console.log(test.capacity);
+console.log(test.get("banana"));
+console.log(test.has("3"));
+console.log(test.remove("4"));
+console.log(test.keys());
+console.log(test.values());
+console.log(test.entries());
+test.clear();
+console.log(test.buckets);
+console.log(test.length());
